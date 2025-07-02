@@ -20,7 +20,7 @@ class WebSocketConfig : WebSocketMessageBrokerConfigurer {
         // WebSocket 연결 엔드포인트
         registry
             .addEndpoint("/ws")
-            .setAllowedOriginPatterns("*")
+            .setAllowedOriginPatterns("http://localhost:3000", "https://*.hellotoday.com")
             .withSockJS()
     }
 }
