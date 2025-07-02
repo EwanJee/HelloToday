@@ -8,4 +8,5 @@ ENTRYPOINT sh -c 'java \
   -Dspring.data.mongodb.uri=$MONGO_URI \
   -Dspring.data.mongodb.username=$MONGO_USERNAME \
   -Dspring.data.mongodb.password=$MONGO_PASSWORD \
+  - echo " $MONGO_URI " \
   -jar hellotodayapi.jar'

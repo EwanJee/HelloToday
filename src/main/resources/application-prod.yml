@@ -1,6 +1,6 @@
 spring:
   data:
     mongodb:
-      password: ${MONGO_PASSWORD}
-      username: ${MONGO_USERNAME}
-      uri: ${MONGO_URI}
+      password: sLG3vKe0DJmajkQy
+      username: ewancareer
+      uri: mongodb+srv://ewancareer:sLG3vKe0DJmajkQy@cluster0.tlmwjyv.mongodb.net/mydatabase
