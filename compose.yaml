@@ -8,11 +8,19 @@
 #    ports:
 #      - '27017:27017'
 services:
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    image: api
+  redis:
+    image: 'redis:latest'
     ports:
-      - '8080:8080'
+      - '6379:6379'
+#  hellotodayapi:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    env_file:
+#      - .env
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=prod, railway
+#    restart: always
+#    image: hellotodayapi
+#    ports:
+#      - '8080:8080'

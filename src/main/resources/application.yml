@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: secret
+    include: railway
     active: prod
 
 server:
