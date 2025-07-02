@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:filename")
+
 package web.hellotoday.schedule
 
 import org.springframework.scheduling.annotation.Scheduled
