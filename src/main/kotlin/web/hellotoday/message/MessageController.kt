@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:no-wildcard-imports")
+
 package web.hellotoday.message
 
 import jakarta.validation.Valid
@@ -11,13 +13,12 @@ import java.time.LocalDate
 
 @RestController
 @RequestMapping("/api/messages")
-@CrossOrigin(origins = ["*"])
 class MessageController(
     private val messageService: MessageService,
 ) {
     @PostMapping
     fun create(
-        @Valid @RequestBody request: MessageRequest,
+        @RequestBody @Valid request: MessageRequest,
     ): ResponseEntity<ApiResponse<MessageResponse>> {
         val response = messageService.saveMessage(request)
         return ResponseEntity.ok(ApiResponse.success(response, "메시지가 성공적으로 저장되었습니다."))
