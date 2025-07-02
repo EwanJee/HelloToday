@@ -1,11 +1,11 @@
 spring:
-  data:
-    mongodb:
-      uri: mongodb://root:secret@localhost:27017/mydatabase?authSource=admin
+  profiles:
+    include: secret
+    active: prod
 
 server:
   port: 8080
 
-logging:
-  level:
-    web: debug
+#logging:
+#  level:
+#    web: debug
