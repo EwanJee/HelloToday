@@ -19,7 +19,7 @@ class WebSocketConfig : WebSocketMessageBrokerConfigurer {
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
         // WebSocket 연결 엔드포인트 - SockJS 활성화
         registry
-            .addEndpoint("/ws/**")
+            .addEndpoint("/ws")
             .setAllowedOriginPatterns(
                 "http://localhost:*",
                 "https://localhost:*",
