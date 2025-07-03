@@ -1,5 +1,6 @@
 package web.hellotoday.common.config
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -13,6 +14,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
+
+    @Value("\${spring.profiles.active:default}")
+    private lateinit var profile : String
+
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
@@ -30,7 +35,7 @@ class SecurityConfig {
                     .requestMatchers("/actuator/health")
                     .permitAll() // 헬스체크 허용
                     .anyRequest()
-                    .permitAll() // 현재는 모든 요청 허용
+                    .authenticated() // 나머지 요청은 인증 필요
             }.headers { headers ->
                 headers
                     .frameOptions { it.sameOrigin() }
@@ -52,7 +57,7 @@ class SecurityConfig {
 
     private fun isProduction(): Boolean {
         // 환경 변수나 프로퍼티를 통해 프로덕션 환경 여부를 판단
-        return System.getenv("ENV") == "production" || System.getProperty("ENV") == "production"
+        return profile == "prod" || profile == "production"
     }
 
     @Bean
@@ -64,8 +69,7 @@ class SecurityConfig {
             listOf(
                 "http://localhost:3000",
                 "http://localhost:5173",
-                "https://hellotoday.com",
-                "https://www.hellotoday.com",
+                "https://hello-today-frontend.vercel.app",
             )
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
         configuration.allowedHeaders = listOf("*")
