@@ -8,11 +8,6 @@ spring:
           stream-usage: true
 
 server:
-  port: ${PORT:8080}
-  error:
-    include-stacktrace: never
-    include-message: always
-  # Railway 환경에서 WebSocket 지원
   forward-headers-strategy: framework
 
 # Railway-specific settings
