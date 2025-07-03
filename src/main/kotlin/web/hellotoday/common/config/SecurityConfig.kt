@@ -36,7 +36,7 @@ class SecurityConfig {
                     .requestMatchers("/actuator/health")
                     .permitAll() // 헬스체크 허용
                     .anyRequest()
-                    .permitAll()
+                    .authenticated() // 나머지 요청은 인증 필요
             }.headers { headers ->
                 headers
                     .frameOptions { it.sameOrigin() }
