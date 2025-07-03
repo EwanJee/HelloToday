@@ -1,6 +1,4 @@
 spring:
   data:
     mongodb:
-      password: bRwHvkHyOQqWMpRaDgmqfhFomOVdFWDu
-      username: mongo
-      uri: mongodb://mongo:bRwHvkHyOQqWMpRaDgmqfhFomOVdFWDu@yamanote.proxy.rlwy.net:53189/mydatabase
+      uri: mongodb://mongo:bRwHvkHyOQqWMpRaDgmqfhFomOVdFWDu@mongodb.railway.internal:27017/mydatabase?authSource=admin
