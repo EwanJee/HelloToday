@@ -16,3 +16,14 @@ management:
   endpoint:
     health:
       show-details: always
+
+# Railway WebSocket and Server Configuration
+server:
+  forward-headers-strategy: native
+  port: ${PORT:8080}
+
+# WebSocket configuration for Railway
+logging:
+  level:
+    org.springframework.web.socket: DEBUG
+    org.springframework.messaging: DEBUG
