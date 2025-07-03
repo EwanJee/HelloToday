@@ -15,7 +15,7 @@ class WebConfig : WebMvcConfigurer {
                 "https://*.vercel.app",
                 "https://*.railway.app",
                 "https://hello-today-frontend.vercel.app",
-                "https://hello-today-frontend-*.vercel.app"
+                "https://hello-today-frontend-*.vercel.app",
             ) // 특정 도메인 패턴 허용
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
             .allowedHeaders("*")

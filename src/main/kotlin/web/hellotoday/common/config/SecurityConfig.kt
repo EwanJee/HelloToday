@@ -3,6 +3,7 @@ package web.hellotoday.common.config
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -71,7 +72,14 @@ class SecurityConfig {
 
         // Vue.js 개발 서버 및 배포 서버 허용
         configuration.allowedOriginPatterns =
-            listOf("*")
+            listOf(
+                "http://localhost:*",
+                "https://localhost:*",
+                "https://*.vercel.app",
+                "https://*.railway.app",
+                "https://hello-today-frontend.vercel.app",
+                "https://hello-today-frontend-*.vercel.app",
+            )
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
         configuration.allowedHeaders = listOf("*")
         configuration.allowCredentials = true

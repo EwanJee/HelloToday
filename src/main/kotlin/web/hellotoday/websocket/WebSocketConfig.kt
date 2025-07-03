@@ -19,8 +19,15 @@ class WebSocketConfig : WebSocketMessageBrokerConfigurer {
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
         // WebSocket 연결 엔드포인트 - SockJS 활성화
         registry
-            .addEndpoint("/ws")
-            .setAllowedOriginPatterns("*") // 모든 도메인 허용
+            .addEndpoint("/ws/**")
+            .setAllowedOriginPatterns(
+                "http://localhost:*",
+                "https://localhost:*",
+                "https://*.vercel.app",
+                "https://*.railway.app",
+                "https://hello-today-frontend.vercel.app",
+                "https://hello-today-frontend-*.vercel.app",
+            ) // 모든 도메인 허용
             .withSockJS()
     }
 }
