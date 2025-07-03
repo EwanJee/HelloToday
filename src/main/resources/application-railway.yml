@@ -7,9 +7,6 @@ spring:
           model: gpt-4o
           stream-usage: true
 
-server:
-  forward-headers-strategy: framework
-
 # Railway-specific settings
 management:
   endpoints:
