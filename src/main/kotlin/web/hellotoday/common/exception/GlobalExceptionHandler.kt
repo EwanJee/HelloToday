@@ -35,6 +35,6 @@ class GlobalExceptionHandler {
     fun handleGenericException(ex: Exception): ResponseEntity<ApiResponse<Nothing>> {
         return ResponseEntity
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body(ApiResponse.error("서버 오류가 발생했습니다"))
+            .body(ApiResponse.error(ex.message ?: "서버 오류가 발생했습니다"))
     }
 }

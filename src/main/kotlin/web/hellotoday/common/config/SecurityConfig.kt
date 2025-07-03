@@ -36,7 +36,7 @@ class SecurityConfig {
                     .requestMatchers("/actuator/health")
                     .permitAll() // 헬스체크 허용
                     .anyRequest()
-                    .authenticated() // 나머지 요청은 인증 필요
+                    .permitAll()
             }.headers { headers ->
                 headers
                     .frameOptions { it.sameOrigin() }
@@ -75,7 +75,7 @@ class SecurityConfig {
                 "https://*.vercel.app",
                 "https://*.railway.app",
                 "https://hello-today-frontend.vercel.app",
-                "https://hello-today-frontend-*.vercel.app"
+                "https://hello-today-frontend-*.vercel.app",
             )
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
         configuration.allowedHeaders = listOf("*")
