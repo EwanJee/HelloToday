@@ -28,8 +28,6 @@ class SecurityConfig {
                 auth
                     .requestMatchers("/api/**")
                     .permitAll() // API 엔드포인트 허용
-                    .requestMatchers("/api/**/**")
-                    .permitAll() // API 하위 엔드포인트 허용
                     .requestMatchers("/ws/**")
                     .permitAll() // WebSocket 및 SockJS 경로 허용
                     .requestMatchers("/", "/static/**", "/public/**")
