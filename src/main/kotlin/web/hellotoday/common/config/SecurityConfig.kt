@@ -3,6 +3,7 @@ package web.hellotoday.common.config
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -29,10 +30,12 @@ class SecurityConfig {
                     .permitAll() // API 엔드포인트 허용
                     .requestMatchers("/api/**/**")
                     .permitAll() // API 하위 엔드포인트 허용
+                    .requestMatchers("/ws")
+                    .permitAll()
                     .requestMatchers("/ws/**")
                     .permitAll() // WebSocket 엔드포인트 허용
-                    .requestMatchers("/ws-native/**")
-                    .permitAll() // 순수 WebSocket 엔드포인트 허용
+                    .requestMatchers(HttpMethod.OPTIONS, "/**")
+                    .permitAll()
                     .requestMatchers("/", "/static/**", "/public/**")
                     .permitAll() // 정적 리소스 허용
                     .requestMatchers("/actuator/health")

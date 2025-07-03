@@ -22,7 +22,5 @@ class WebSocketConfig : WebSocketMessageBrokerConfigurer {
             .addEndpoint("/ws")
             .setAllowedOriginPatterns("*") // 모든 도메인 허용
             .withSockJS()
-            .setHeartbeatTime(25000) // 하트비트 설정
-            .setDisconnectDelay(5000) // 연결 해제 지연
     }
 }
