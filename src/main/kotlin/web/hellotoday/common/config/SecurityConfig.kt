@@ -57,7 +57,8 @@ class SecurityConfig {
     private fun isProduction(): Boolean {
         // 환경 변수나 프로퍼티를 통해 프로덕션 환경 여부를 판단
         println("--- Current Profile: $profile --")
-        return profile == "prod" || profile == "production"
+//        return profile == "prod" || profile == "production"
+        return profile.contains("prod") || profile.contains("production")
     }
 
     @Bean
