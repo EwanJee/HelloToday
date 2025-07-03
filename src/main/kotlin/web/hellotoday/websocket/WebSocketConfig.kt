@@ -17,7 +17,7 @@ class WebSocketConfig : WebSocketMessageBrokerConfigurer {
     }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        // WebSocket 연결 엔드포인트
+        // WebSocket 연결 엔드포인트 - SockJS 활성화
         registry
             .addEndpoint("/ws")
             .setAllowedOriginPatterns(
@@ -25,8 +25,12 @@ class WebSocketConfig : WebSocketMessageBrokerConfigurer {
                 "https://localhost:*",
                 "https://*.vercel.app",
                 "https://*.railway.app",
+                "https://*.up.railway.app",
                 "https://hello-today-frontend.vercel.app",
-                "https://hello-today-frontend-*.vercel.app"
+                "https://hello-today-frontend-*.vercel.app",
+                "*", // Railway 프록시 환경에서 origin 검증 우회
             ).withSockJS()
+            .setHeartbeatTime(25000) // 하트비트 설정
+            .setDisconnectDelay(5000) // 연결 해제 지연
     }
 }
