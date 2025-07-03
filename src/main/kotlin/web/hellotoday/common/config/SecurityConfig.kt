@@ -3,7 +3,6 @@ package web.hellotoday.common.config
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -34,14 +33,12 @@ class SecurityConfig {
                     .permitAll()
                     .requestMatchers("/ws/**")
                     .permitAll() // WebSocket 엔드포인트 허용
-                    .requestMatchers(HttpMethod.OPTIONS, "/**")
-                    .permitAll()
                     .requestMatchers("/", "/static/**", "/public/**")
                     .permitAll() // 정적 리소스 허용
                     .requestMatchers("/actuator/health")
                     .permitAll() // 헬스체크 허용
                     .anyRequest()
-                    .permitAll()
+                    .authenticated() // 나머지 요청은 인증 필요
             }.headers { headers ->
                 headers
                     .frameOptions { it.sameOrigin() }
@@ -74,14 +71,7 @@ class SecurityConfig {
 
         // Vue.js 개발 서버 및 배포 서버 허용
         configuration.allowedOriginPatterns =
-            listOf(
-                "http://localhost:*",
-                "https://localhost:*",
-                "https://*.vercel.app",
-                "https://*.railway.app",
-                "https://hello-today-frontend.vercel.app",
-                "https://hello-today-frontend-*.vercel.app",
-            )
+            listOf("*")
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
         configuration.allowedHeaders = listOf("*")
         configuration.allowCredentials = true
