@@ -2,5 +2,5 @@ spring:
   data:
     mongodb:
       password: ${MONGOPASSWORD}
-      username: ${MONGOUSER}
-      uri: ${MONGO_URL}
+      username: mongo
+      uri: mongodb://mongo:bRwHvkHyOQqWMpRaDgmqfhFomOVdFWDu@mongodb.railway.internal:27017

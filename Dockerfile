@@ -3,10 +3,6 @@ FROM amazoncorretto:21-alpine-jdk AS builder
 WORKDIR /app
 COPY . .
 
-ENV MONGO_URI=${MONGO_URL}
-ENV MONGOUSER=${MONGOUSER}
-ENV MONGOPASSWORD=${MONGOPASSWORD}
-
 RUN apk add --no-cache bash
 RUN chmod +x ./gradlew
 RUN ./gradlew clean build --no-daemon
