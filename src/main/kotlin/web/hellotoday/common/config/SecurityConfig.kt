@@ -14,9 +14,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
-
-    @Value("\${spring.profiles.active:default}")
-    private lateinit var profile : String
+    @Value("\${spring.profiles.active}")
+    private lateinit var profile: String
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
@@ -57,6 +56,7 @@ class SecurityConfig {
 
     private fun isProduction(): Boolean {
         // 환경 변수나 프로퍼티를 통해 프로덕션 환경 여부를 판단
+        println("--- Current Profile: $profile --")
         return profile == "prod" || profile == "production"
     }
 
@@ -67,8 +67,8 @@ class SecurityConfig {
         // Vue.js 개발 서버 허용
         configuration.allowedOriginPatterns =
             listOf(
-                "http://localhost:3000",
-                "http://localhost:5173",
+                "http://localhost:*",
+                "https://hello-today-frontend.vercel.app/",
                 "https://hello-today-frontend.vercel.app",
             )
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
