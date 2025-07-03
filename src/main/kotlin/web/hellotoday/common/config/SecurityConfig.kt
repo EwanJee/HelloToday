@@ -31,6 +31,8 @@ class SecurityConfig {
                     .permitAll() // API 하위 엔드포인트 허용
                     .requestMatchers("/ws/**")
                     .permitAll() // WebSocket 엔드포인트 허용
+                    .requestMatchers("/ws-native/**")
+                    .permitAll() // 순수 WebSocket 엔드포인트 허용
                     .requestMatchers("/", "/static/**", "/public/**")
                     .permitAll() // 정적 리소스 허용
                     .requestMatchers("/actuator/health")
