@@ -1,4 +1,15 @@
+# 1단계: Gradle을 사용해 빌드
+FROM amazoncorretto:21-alpine-jdk AS builder
+WORKDIR /app
+COPY . .
+RUN apk add --no-cache bash
+RUN chmod +x ./gradlew
+RUN ./gradlew clean build --no-daemon
+
+# 2단계: 빌드된 JAR 파일만 실행 컨테이너로 복사
 FROM amazoncorretto:21-alpine-jdk
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} hellotodayapi.jar
-ENTRYPOINT ["java", "-Dspring.profiles.active=prod, railway", "-jar", "hellotodayapi.jar"]
+WORKDIR /app
+COPY --from=builder /app/build/libs/*.jar app.jar
+
+EXPOSE 8081
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod, railway", "-Duser.timezone=Asia/Seoul", "-jar", "/app/app.jar"]
