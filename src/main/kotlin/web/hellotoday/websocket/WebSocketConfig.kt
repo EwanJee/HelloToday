@@ -22,8 +22,11 @@ class WebSocketConfig : WebSocketMessageBrokerConfigurer {
             .addEndpoint("/ws")
             .setAllowedOriginPatterns(
                 "http://localhost:*",
+                "https://localhost:*",
+                "https://*.vercel.app",
+                "https://*.railway.app",
                 "https://hello-today-frontend.vercel.app",
-                "https://hello-today-frontend.vercel.app/",
+                "https://hello-today-frontend-*.vercel.app"
             ).withSockJS()
     }
 }

@@ -6,3 +6,12 @@ spring:
         options:
           model: gpt-4o
           stream-usage: true
+# Railway-specific settings
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

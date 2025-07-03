@@ -67,12 +67,15 @@ class SecurityConfig {
     fun corsConfigurationSource(): CorsConfigurationSource {
         val configuration = CorsConfiguration()
 
-        // Vue.js 개발 서버 허용
+        // Vue.js 개발 서버 및 배포 서버 허용
         configuration.allowedOriginPatterns =
             listOf(
                 "http://localhost:*",
-                "https://hello-today-frontend.vercel.app/",
+                "https://localhost:*",
+                "https://*.vercel.app",
+                "https://*.railway.app",
                 "https://hello-today-frontend.vercel.app",
+                "https://hello-today-frontend-*.vercel.app"
             )
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
         configuration.allowedHeaders = listOf("*")
