@@ -2,5 +2,5 @@ spring:
   data:
     mongodb:
       password: ${MONGOPASSWORD}
-      username: ${MONGO_USERNAME}
-      uri: ${MONGOUSER}
+      username: ${MONGOUSER}
+      uri: ${MONGO_URL}

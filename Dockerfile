@@ -11,5 +11,5 @@ FROM amazoncorretto:21-alpine-jdk
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-EXPOSE 8081
+EXPOSE 8080
 ENTRYPOINT ["java", "-Dspring.profiles.active=prod, railway", "-Duser.timezone=Asia/Seoul", "-jar", "/app/app.jar"]
