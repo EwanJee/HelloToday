@@ -3,4 +3,4 @@ spring:
     mongodb:
       password: bRwHvkHyOQqWMpRaDgmqfhFomOVdFWDu
       username: mongo
-      uri: mongodb://mongo:bRwHvkHyOQqWMpRaDgmqfhFomOVdFWDu@yamanote.proxy.rlwy.net:53189
+      uri: mongodb://mongo:bRwHvkHyOQqWMpRaDgmqfhFomOVdFWDu@yamanote.proxy.rlwy.net:53189/mydatabase
